@@ -2,6 +2,7 @@
 const form = document.querySelector(".top-banner form");
 const input = document.querySelector("input");
 const apiKey = "f8ac4b0a6e8232a4b87f3ab82c6f5931";
+const text = document.querySelector(".textField");
 
 // Submit button event
 form.addEventListener("submit", e => {
@@ -14,10 +15,16 @@ form.addEventListener("submit", e => {
   .then(response => response.json())
   .then(data => {
     // If the user has entered a valid city
-    console.log(`The temperature in ${inputVal} is ${Math.round(data.main.temp)}°C`);
+    text.textContent = `The temperature in ${capitalize(inputVal)} is ${Math.round(data.main.temp)}°C`;
   })
   // If the user has entered an invalid city
   .catch(() => {
-    console.log("No city found");
+    text.textContent = "The city entered is not valid... Please try again";
   });
 });
+
+// Function to capitalize first letter of city
+function capitalize(s)
+{
+    return s[0].toUpperCase() + s.slice(1);
+}
