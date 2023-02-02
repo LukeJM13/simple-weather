@@ -30,7 +30,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 400px;
+    height: 250px;
 }
 
 input {
@@ -73,7 +73,7 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 35px;
 }
 
 .textMiddle {
@@ -102,4 +102,9 @@ img {
     letter-spacing: 8px;
     display: flex;
     align-items: center;
+}
+
+.textBottom {
+    letter-spacing: 7px;
+    font-style: italic;
 }

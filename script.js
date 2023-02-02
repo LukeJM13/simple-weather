@@ -11,6 +11,7 @@ sunriseIcon.src = "/Images/sunrise.png";
 const sunsetArea = document.querySelector(".textMiddleRight");
 const sunsetIcon = document.createElement("img");
 sunsetIcon.src = "/Images/sunset.png";
+const weather = document.querySelector(".weather");
 
 // Submit button event
 form.addEventListener("submit", e => {
@@ -23,16 +24,21 @@ form.addEventListener("submit", e => {
   .then(response => response.json())
   .then(data => {
     // If the user has entered a valid city
-    console.log(data);
     text.textContent = `The temperature in ${capitalize(inputVal)} is ${Math.round(data.main.temp)}°C`;
     sunrise.textContent = `Sunrise today is ${(new Date(data.sys.sunrise * 1000)).getHours()}:${(new Date(data.sys.sunrise * 1000)).getMinutes()} GMT`;
     sunset.textContent = `Sunset today is ${(new Date(data.sys.sunset * 1000)).getHours()}:${(new Date(data.sys.sunset * 1000)).getMinutes()} GMT`;
     sunriseArea.appendChild(sunriseIcon);
     sunsetArea.appendChild(sunsetIcon);
+    weather.textContent = `Current weather: ${data.weather[0].main}`;
   })
   // If the user has entered an invalid city
   .catch(() => {
     text.textContent = "The city entered is not valid... Please try again";
+    sunriseArea.removeChild(sunriseIcon);
+    sunsetArea.removeChild(sunsetIcon);
+    sunrise.textContent = "";
+    sunset.textContent = "";
+    weather.textContent = "";
   });
 });
 
