@@ -16,6 +16,8 @@ form.addEventListener("submit", e => {
   .then(data => {
     // If the user has entered a valid city
     text.textContent = `The temperature in ${capitalize(inputVal)} is ${Math.round(data.main.temp)}°C`;
+    let date = new Date(1675356616 * 1000);
+    console.log(date.getHours() + ":" + date.getMinutes());
   })
   // If the user has entered an invalid city
   .catch(() => {
