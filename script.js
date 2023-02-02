@@ -3,6 +3,14 @@ const form = document.querySelector(".top-banner form");
 const input = document.querySelector("input");
 const apiKey = "f8ac4b0a6e8232a4b87f3ab82c6f5931";
 const text = document.querySelector(".textField");
+const sunrise = document.querySelector(".sunrise");
+const sunset = document.querySelector(".sunset");
+const sunriseArea = document.querySelector(".textMiddleLeft");
+const sunriseIcon = document.createElement("img");
+sunriseIcon.src = "/Images/sunrise.png";
+const sunsetArea = document.querySelector(".textMiddleRight");
+const sunsetIcon = document.createElement("img");
+sunsetIcon.src = "/Images/sunset.png";
 
 // Submit button event
 form.addEventListener("submit", e => {
@@ -15,9 +23,12 @@ form.addEventListener("submit", e => {
   .then(response => response.json())
   .then(data => {
     // If the user has entered a valid city
+    console.log(data);
     text.textContent = `The temperature in ${capitalize(inputVal)} is ${Math.round(data.main.temp)}°C`;
-    let date = new Date(1675356616 * 1000);
-    console.log(date.getHours() + ":" + date.getMinutes());
+    sunrise.textContent = `Sunrise today is ${(new Date(data.sys.sunrise * 1000)).getHours()}:${(new Date(data.sys.sunrise * 1000)).getMinutes()} GMT`;
+    sunset.textContent = `Sunset today is ${(new Date(data.sys.sunset * 1000)).getHours()}:${(new Date(data.sys.sunset * 1000)).getMinutes()} GMT`;
+    sunriseArea.appendChild(sunriseIcon);
+    sunsetArea.appendChild(sunsetIcon);
   })
   // If the user has entered an invalid city
   .catch(() => {

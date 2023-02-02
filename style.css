@@ -70,8 +70,36 @@ form {
 
 .textSection {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 200px;
-    letter-spacing: 9px;
+    gap: 15px;
+}
+
+.textMiddle {
+    display: flex;
+    gap: 50px;
+}
+
+img {
+    height: auto;
+    width: 100px;
+}
+
+.textMiddleLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textMiddleRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textTop {
+    letter-spacing: 8px;
+    display: flex;
+    align-items: center;
 }
